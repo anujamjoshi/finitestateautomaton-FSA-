@@ -53,21 +53,23 @@ public class FSA {
 		else if (entersTrap(input)){
 			return "reject";
 		}
-		return input;
+		
+		return "accept";
 	}
 	private boolean entersTrap(String input) {
 		String check;
 		String state ="0";
 		for (int i =0; i < input.length(); i++){
 			check = input.substring(i, i+1);
-			System.out.println("check" + check);
+		//	System.out.println("check" + check);
 			String key = state+check;
 			state= transitions.get(key);
-			System.out.println("State = " + state);
-			
-			
-
+			//System.out.println("State = " + state);
+			if (state.equals(String.valueOf(numStates-1))){
+				return true;
+			}
 		}
+		
 		return false;
 	}
 	private boolean containsAllVals(String input) {

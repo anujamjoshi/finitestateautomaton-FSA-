@@ -44,11 +44,11 @@ public class DFSAMachine {
 			fsa.printTransitions();
 			ArrayList<String> inputVal = new ArrayList<String>();
 			do{
-				System.out.println(line);
+				System.out.print("Input: "+ line +"\t");
 				System.out.println(fsa.works(line));
 				line = br.readLine();
 			} while (line.equals("******************")==false);
-			System.out.println(line + "HA");
+			System.out.println(line );
 
 		}catch(Exception e){
 
