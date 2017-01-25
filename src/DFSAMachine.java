@@ -48,9 +48,15 @@ public class DFSAMachine {
 				}while (line.contains("("));
 				fsa.setTransitions(transitions);
 				fsa.printTransitions();
-				ArrayList<String> inputVal = new ArrayList<String>();
+				System.out.println("Strings:");
 				do{
-					System.out.print("Input: "+ line +"\t");
+//					
+					if (line.equals("[X]")){
+						System.out.print("empty Set \t");
+					}
+					else{
+						System.out.print(line +"\t");
+					}
 					System.out.println(fsa.works(line));
 					line = br.readLine();
 				} while (line.equals("******************")==false);
