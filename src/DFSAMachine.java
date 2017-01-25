@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 
 public class DFSAMachine {
@@ -33,7 +34,7 @@ public class DFSAMachine {
 				}
 				fsa.setAlphabet(alphabet);
 				fsa.printAlphabet();
-				HashMap <String , String > transitions = new HashMap<String, String>(); 
+				TreeMap<String, String> transitions = new TreeMap<String, String>(); 
 				String line = br.readLine();
 				do {
 

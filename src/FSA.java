@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeMap;
 
 
 public class FSA {
 	int numStates;
 	ArrayList<String> finalStates;
 	ArrayList<String> alphabet;
-	HashMap<String, String> transitions;
+	TreeMap<String, String> transitions;
 
 	ArrayList<String> inputVal;
 	public void setNumStates(int numStates) {
@@ -28,15 +30,21 @@ public class FSA {
 	public void printAlphabet() {
 		System.out.println("alphabet " +alphabet.toString());
 	}
-	public void setTransitions(HashMap<String, String> transitions) {
+	public void setTransitions(TreeMap<String, String> transitions) {
 		this.transitions=transitions;
 	}
-	public void setInput(ArrayList<String> inputVal) {
-		this.inputVal = inputVal;
-
-	}
 	public void printTransitions() {
-		System.out.println("Transitions" + transitions.toString());
+		System.out.println("Transitions");
+		String out = "";
+		Set<String> transitionKeys = transitions.keySet();
+		for(String s: transitionKeys){
+			String p = s.substring(0,1);
+			String a = s.substring(1);
+			out+= "(" + p+ " " + a +" ";
+			out+= transitions.get(s);
+			out+= ")\n";
+		}
+		System.out.println(out);
 
 	}
 
