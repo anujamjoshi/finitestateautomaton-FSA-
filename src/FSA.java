@@ -58,16 +58,20 @@ public class FSA {
 		else if(containsAllVals(input) == false){
 			return "reject";
 		}
-
-		 if (entersTrap(input)){
+		String output = entersTrap(input);
+		System.out.println("Output " + output);
+		 if (entersTrap(input).equals("Trap")){
 			
 			
 			return "reject";
 		}
+		 else if (!finalStates.contains(output)){
+			 return "reject";
+		 }
 		
 		return "accept";
 	}
-	private boolean entersTrap(String input) {
+	private String entersTrap(String input) {
 
 		String check;
 		String state ="0";
@@ -77,16 +81,17 @@ public class FSA {
 			check =getMeta(check);
 		
 
-			String key = state+check;
+			String key = state+" " +check;
+			//System.out.println("KEy " + key);
 			state= transitions.get(key);
-	
+		//	System.out.println("State " + state);
 	
 			if (state.equals(String.valueOf(numStates-1))){
-				return true;
+				return "Trap";
 			}
 		}
 		
-		return false;
+		return state;
 	}
 	private boolean containsAllVals(String input) {
 	
@@ -97,6 +102,7 @@ public class FSA {
 			check = getMeta(check);
 			
 			if (!alphabet.contains(check)){
+				
 				return false;
 			}
 
@@ -114,7 +120,7 @@ public class FSA {
 			}
 
 		}
-		else if (alphabet.contains("A%Z")){
+		 if (alphabet.contains("A%Z")){
 			for(char c = 'A'; c <= 'Z'; c++) {
 				if (check.equals(String.valueOf(c))){
 					return "A%Z";

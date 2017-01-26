@@ -43,8 +43,16 @@ public class DFSAMachine {
 					//System.out.println("Transition " + line);
 
 					String [] transitionParts = line.split(" ");
-					//	System.out.println(transitionParts[0] + transitionParts[1] + transitionParts[2]);
-					transitions.put(transitionParts[0].charAt(1)+transitionParts[1], transitionParts[2].charAt(0)+"");
+					//	System.out.println("AHHHH" +transitionParts[0] +" "+  transitionParts[1] +" "+ transitionParts[2]);
+						String p = transitionParts[0];
+						String p1 = p.substring(1);
+//						System.out.println("p1 " + p1);
+						String q = transitionParts[2];
+//						System.out.println("q" + q);
+						int ind = q.indexOf(')');
+						String q1 = q.substring(0, ind) ;
+//						System.out.println(q1+" q1");
+						transitions.put(p1+" "+transitionParts[1], q1);
 
 					line = br.readLine();
 				}while (line.contains("("));
