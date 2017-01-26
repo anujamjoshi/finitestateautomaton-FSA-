@@ -58,21 +58,29 @@ public class FSA {
 		else if(containsAllVals(input) == false){
 			return "reject";
 		}
-		else if (entersTrap(input)){
+
+		 if (entersTrap(input)){
+			
+			
 			return "reject";
 		}
 		
 		return "accept";
 	}
 	private boolean entersTrap(String input) {
+
 		String check;
 		String state ="0";
 		for (int i =0; i < input.length(); i++){
 			check = input.substring(i, i+1);
-		//	System.out.println("check" + check);
+	
+			check =getMeta(check);
+		
+
 			String key = state+check;
 			state= transitions.get(key);
-			//System.out.println("State = " + state);
+	
+	
 			if (state.equals(String.valueOf(numStates-1))){
 				return true;
 			}
@@ -81,15 +89,56 @@ public class FSA {
 		return false;
 	}
 	private boolean containsAllVals(String input) {
+	
 		String check;
+	
 		for (int i =0; i < input.length(); i++){
 			check = input.substring(i, i+1);
+			check = getMeta(check);
+			
 			if (!alphabet.contains(check)){
 				return false;
 			}
 
 		}
+
 		return true;
+	}
+	private String getMeta(String check) {
+	
+		if (alphabet.contains("a%z")){
+			for(char c = 'a'; c <= 'z'; c++) {
+				if (check.equals(String.valueOf(c))){
+					return "a%z";
+				}
+			}
+
+		}
+		else if (alphabet.contains("A%Z")){
+			for(char c = 'A'; c <= 'Z'; c++) {
+				if (check.equals(String.valueOf(c))){
+					return "A%Z";
+				}
+			}
+		}
+		if (alphabet.contains("0%9")){
+			for(char c = '0'; c <= '9'; c++) {
+				if (check.equals(String.valueOf(c))){
+					return "0%9";
+				}
+			}
+			
+		}
+		else if (alphabet.contains("1%9")){
+			for(char c = '1'; c <= '9'; c++) {
+				if (check.equals(String.valueOf(c))){
+					return "1%9";
+				}
+			}
+			
+		}
+		
+		return check;
 	}
 	
 

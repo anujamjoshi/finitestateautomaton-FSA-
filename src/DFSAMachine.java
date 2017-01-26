@@ -1,17 +1,16 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 
 public class DFSAMachine {
+	private static BufferedReader br;
+
 	public static void main(String[]args){
 		String fileName= "InputFile.txt";
-		ArrayList<String> input = new ArrayList<String>();
-		
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(fileName));
+			br = new BufferedReader(new FileReader(fileName));
 			int numInput = 1;
 			do{
 				System.out.println("Finite State Automaton #" + numInput);
@@ -19,12 +18,13 @@ public class DFSAMachine {
 				int numStates = Integer.parseInt(br.readLine());
 				fsa.setNumStates(numStates);
 				fsa.printNumStates(); 
-
+				//----------------------------------- number of states
 				ArrayList<String> finalStates = new ArrayList<String>(); 
 				String [] numFinal = br.readLine().split(" "); 
 				for (String s: numFinal){
 					finalStates.add(s);
 				}
+				//----------------------------------- final states
 				fsa.setFinalStates(finalStates);
 				fsa.printFinalStates();
 				ArrayList<String> alphabet = new ArrayList<String>(); 
@@ -32,8 +32,10 @@ public class DFSAMachine {
 				for (String s: alphabet1){
 					alphabet.add(s);
 				}
+				//----------------------------------- alphabet 
 				fsa.setAlphabet(alphabet);
 				fsa.printAlphabet();
+				//----------------------------------- Transitions
 				TreeMap<String, String> transitions = new TreeMap<String, String>(); 
 				String line = br.readLine();
 				do {
@@ -48,9 +50,11 @@ public class DFSAMachine {
 				}while (line.contains("("));
 				fsa.setTransitions(transitions);
 				fsa.printTransitions();
+
+
+				//______________________________________________ input strings 
 				System.out.println("Strings:");
-				do{
-//					
+				do{			
 					if (line.equals("[X]")){
 						System.out.print("empty Set \t");
 					}
