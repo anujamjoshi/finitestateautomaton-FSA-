@@ -30,6 +30,8 @@ import java.util.TreeMap;
  *   1%9			represents digits 1...9
  *   a%z			represents lowercase characters a...z
  *   A%Z			represents uppercase characters A...Z
+ *   
+ *   Main Class: DFSAMachine.java
  * */
 public class DFSAMachine {
 	private static BufferedReader br;
