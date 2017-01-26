@@ -31,6 +31,8 @@ import java.util.TreeMap;
  *   a%z			represents lowercase characters a...z
  *   A%Z			represents uppercase characters A...Z
  *   
+ *   Please note: in the output file I made empty strings  print out as "empty" 
+ *   
  *   Main Class: DFSAMachine.java
  * */
 public class DFSAMachine {
